@@ -2,30 +2,22 @@ import socket
 import struct
 import random
 
-# Configurações do cliente
 HOST = 'localhost'
 PORT = 12345
 
-def minerar_nonce():
-    # Simulação do processo de mineração
-    nonce = random.randint(0, 1000000)
-    print(f'Nonce gerado: {nonce}')
-    return nonce
-
-if __name__ == '__main__':
+def main():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
 
-        # Recebe a mensagem inicial do servidor
-        s.recv(1024)
+        s.recv(1024)  # Recebe a mensagem inicial do servidor
 
-        # Gera um nonce
-        nonce = minerar_nonce()
+        nonce = random.randint(0, 1000000)
+        print(f'Nonce gerado: {nonce}')
 
-        # Envia o nonce para o servidor
-        data = struct.pack('i', nonce)
-        s.sendall(data)
+        s.sendall(struct.pack('i', nonce))  # Envia o nonce para o servidor
 
-        # Recebe a confirmação do servidor
         resposta = s.recv(1024)
         print(f'Resposta do servidor: {resposta.decode()}')
+
+if __name__ == '__main__':
+    main()
