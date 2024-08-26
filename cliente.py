@@ -12,7 +12,7 @@ def minerar_nonce():
     print(f'Nonce gerado: {nonce}')
     return nonce
 
-def start_client():
+if __name__ == '__main__':
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
 
@@ -29,6 +29,3 @@ def start_client():
         # Recebe a confirmação do servidor
         resposta = s.recv(1024)
         print(f'Resposta do servidor: {resposta.decode()}')
-
-if __name__ == '__main__':
-    start_client()
