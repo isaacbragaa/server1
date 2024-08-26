@@ -1,3 +1,7 @@
+servidor vai perguntar uma msg para validar a msg é 'vitória leticia'
+dps vai perguntar quantos bits quer que comece o inicio do hash
+me de um nonce q somado com o hash tenha 20 bits no começo
+
 servidor master possui uma msg(teste) um bloco de mineração em hash
 cliente pergunta se tem algum tipo de validação
 servidor responde que tem 3 bytes zero antes
